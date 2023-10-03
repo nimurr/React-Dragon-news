@@ -1,11 +1,22 @@
 import { Link, NavLink } from "react-router-dom"
 import userImg from '../assets/user.png'
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import { useContext } from "react";
 
 export default function Navbar() {
+    const { user,logOut } = useContext(AuthContext);
+
+    // console.log(user)
+    const handleLogOut = ()=>{
+        logOut()
+        .then()
+        .catch( alert('logout success fully'))
+    }
+
     const navList = <>
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/about'>About</NavLink></li>
-        <li><NavLink to='/career'>Career</NavLink></li>
+        <li className="mr-4 cursor-pointer"><NavLink to='/'>Home</NavLink></li>
+        <li className="mr-4 cursor-pointer"><NavLink>About</NavLink></li>
+        <li className="mr-4 cursor-pointer"><NavLink>Career</NavLink></li>
     </>
     return (
         <div className="my-10">
@@ -22,14 +33,18 @@ export default function Navbar() {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                       {navList}
+                        {navList}
                     </ul>
                 </div>
                 <div className="navbar-end">
                     <img className="w-10 mr-2" src={userImg} alt="" />
-                    <Link to='/login'>
-                        <button className="btn">Login</button>
-                    </Link>
+                    {
+                        !user ?
+                        <Link to='/login'>
+                            <button className="btn">Login</button>
+                        </Link> : 
+                        <button className="btn capitalize" onClick={handleLogOut}>LogOut</button>
+                    }
                 </div>
             </div>
         </div>

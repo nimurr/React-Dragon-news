@@ -3,8 +3,8 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
 // Your web app's Firebase configuration
+
 const firebaseConfig = {
   apiKey: "AIzaSyA0HMoixZibwC0O2cp9Yxqxuo9MKCln8NA",
   authDomain: "react-dragon-news-auth-1461d.firebaseapp.com",
